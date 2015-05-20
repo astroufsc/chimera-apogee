@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-from ApogeeWrapper import ApogeeManager
+from apogeemanager import ApogeeManager
 import datetime
 
 now = datetime.datetime.now()

@@ -22,4 +22,4 @@
 ## drivers packaged (as this one) should import the corresponding driver on __init__
 ##
 
-from chimera.instruments.apogee.apogee import APOGEE
+from chimera_apogee.instruments.apogee import Apogee
