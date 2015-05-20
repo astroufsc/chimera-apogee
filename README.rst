@@ -1,17 +1,24 @@
-chimera_template plugin
-=======================
+chimera_apogee plugin
+=====================
 
-This is an template plugin for the chimera observatory control system
-https://github.com/astroufsc/chimera .
+This is a plugin for Apogee Alta cameras on the chimera observatory control system https://github.com/astroufsc/chimera.
 
-Usage
------
 
-Rename chimera_template for your plugin name. It is important that the plugin
-name must start with chimera\_ to be found by chimera. Instruments and
-controllers must follow the
-`standard chimera_(plugin_name)/(instruments|controllers)/(plugin).py`
+Installation
+------------
 
-The class inside `(plugin).py` should be named Plugin (with CamelCase letters).
+    sudo apt-get install libapogee-dev cfitsio-dev wcs-dev libwcstools-dev libusb-dev tcl-dev libcurl4-openssl-dev wcslib-dev
 
-For more info: https://github.com/astroufsc/chimera/blob/master/docs/site/chimerafordevs.rst#chimera-objects
+
+Tested cameras
+--------------
+
+* Apogee Alta U47
+
+Configuration Example
+---------------------
+
+    camera:
+        name: alta_u47
+        type: Apogee
+
