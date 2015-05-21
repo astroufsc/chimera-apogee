@@ -2,8 +2,9 @@
 
 from ctypes import cdll
 import ctypes as c
+import os
 
-libc = cdll.LoadLibrary('libapogee_chimera.so')
+libc = cdll.LoadLibrary('%s/libapogee_chimera.so' % os.path.dirname(os.path.abspath(__file__)))
 
 
 class ApogeeManager(object):
@@ -44,7 +45,7 @@ class ApogeeManager(object):
         return temperature
 
     def getImageData(self):
-        libc.getImagedata.restype = (c.c_ushort * 1024 * 1024 * 1024)()
+        libc.getImageData.restype = (c.c_ushort * 1024 * 1024 * 1024)
         return libc.getImageData(self.obj)
 
     def startFan(self):

@@ -22,4 +22,5 @@
 ## drivers packaged (as this one) should import the corresponding driver on __init__
 ##
 
-from chimera_apogee.instruments.apogee import Apogee
+#from chimera_apogee.instruments.apogee import Apogee
+#from chimera_apogee.instruments.apogeemanager import ApogeeManager

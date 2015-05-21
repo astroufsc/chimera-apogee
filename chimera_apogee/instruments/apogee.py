@@ -21,7 +21,7 @@
 import datetime as dt
 
 import numpy as np
-from chimera.instruments.apogee.apogeemanager import ApogeeManager
+from chimera_apogee.instruments.apogeemanager import ApogeeManager
 from chimera.interfaces.camera import (CCD, CameraFeature, Shutter, ReadoutMode, CameraStatus)
 from chimera.util.image import ImageUtil
 from chimera.instruments.camera import CameraBase

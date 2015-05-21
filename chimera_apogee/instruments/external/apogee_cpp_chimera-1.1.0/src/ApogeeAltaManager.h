@@ -9,7 +9,7 @@
 #define APOGEEALTAMANAGER_H_
 
 #include "fitsio.h"
-#include "tcl.h"
+#include "tcl8.6/tcl.h"
 #include "Alta.h"
 #include "FindDeviceUsb.h"
 #include "CameraInfo.h"

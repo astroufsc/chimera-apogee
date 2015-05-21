@@ -15,6 +15,9 @@
 #include <string.h>
 #include <string>
 #include <cmath>
+#include <stdio.h>
+#include <unistd.h>
+
 
 ApogeeAltaManager::ApogeeAltaManager(int xbin, int ybin, int xstart, int xend,
  int ystart, int yend) : ready_(false)
@@ -250,35 +253,35 @@ bool ApogeeAltaManager::expose(char* image_name, double time_exposure, int shutt
 			apogee_.GetImage(imageData_);
 			copy(imageData_.begin(), imageData_.end(), pccdData);
 
-			// /*	    Use the libccd routine to find the corresponding buffer index */
-			// bnum = CCD_locate_buffernum( const_cast<char *>("tempobs") );
+			 /*	    Use the libccd routine to find the corresponding buffer index */
+			 bnum = CCD_locate_buffernum( const_cast<char *>("tempobs") );
 
-			// /*	    Print details about the buffer for debug purposes */
-			// printf("Buffer %4d %s = %d bytes cols=%d rows=%d depth=%d\n",bnum,CCD_Frame[bnum].name,
-			// 		CCD_Frame[bnum].size,CCD_Frame[bnum].xdim,CCD_Frame[bnum].ydim,CCD_Frame[bnum].zdim);
+			 /*	    Print details about the buffer for debug purposes */
+			 printf("Buffer %4d %s = %d bytes cols=%d rows=%d depth=%d\n",bnum,CCD_Frame[bnum].name,
+			 		CCD_Frame[bnum].size,CCD_Frame[bnum].xdim,CCD_Frame[bnum].ydim,CCD_Frame[bnum].zdim);
 
-			// /*	    Obtain the memory address of the actual image data, and x,y dimensions */
-			// image = CCD_Frame[bnum].pixels;
-			// nx = apogee_.GetRoiNumCols();
-			// ny = apogee_.GetRoiNumRows();
+			 /*	    Obtain the memory address of the actual image data, and x,y dimensions */
+			 image = CCD_Frame[bnum].pixels;
+			 nx = apogee_.GetRoiNumCols();
+			 ny = apogee_.GetRoiNumRows();
 
-			// /*	    If this is part of a sequence, prefix image name with the number */
-			// if (config_.numexp > 1)
-			// {
-			// 	sprintf(seqname,"%d_%s",i, config_.imagename);
-			// 	if ( config_.bulkseq )
-			// 	{
-			// 		ny = apogee_.GetRoiNumRows() * apogee_.GetImageCount();
-			// 		saveimage(image, seqname, nx, ny);
-			// 		i = config_.numexp;
-			// 	} else
-			// 	{
-			// 		saveimage(image, seqname, nx, ny);
-			// 	}
-			// } else
-			// {
-			// 	saveimage(image, config_.imagename, nx, ny);
-			// }
+			 /*	    If this is part of a sequence, prefix image name with the number */
+			 if (config_.numexp > 1)
+			 {
+			 	sprintf(seqname,"%d_%s",i, config_.imagename);
+			 	if ( config_.bulkseq )
+			 	{
+			 		ny = apogee_.GetRoiNumRows() * apogee_.GetImageCount();
+			 		saveimage(image, seqname, nx, ny);
+			 		i = config_.numexp;
+			 	} else
+			 	{
+			 		saveimage(image, seqname, nx, ny);
+			 	}
+			 } else
+			 {
+			 	saveimage(image, config_.imagename, nx, ny);
+			 }
 
 			/*	    Wait requested interval between exposures (default is 0) */
 			sleep(config_.ipause);
