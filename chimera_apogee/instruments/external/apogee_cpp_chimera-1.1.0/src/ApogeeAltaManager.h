@@ -83,7 +83,9 @@ public:
 
 	virtual void startCooling(double temperature);
 	virtual void stopCooling();
+	virtual bool isCooling();
 	virtual double getTemperature();
+	virtual double getTemperatureHeatsink();
 	virtual std::vector<uint16_t> getImageData() { return imageData_; }	
 
 	virtual void startFan();
@@ -134,10 +136,21 @@ extern "C"  //Tells the compile to use C-linkage for the next scope.
 		return manager->stopCooling();
 	}
 
+    bool isCooling(ApogeeAltaManager* manager)
+    {
+    	return manager->isCooling();
+    }
+
 	double getTemperature(ApogeeAltaManager* manager)
 	{
 		return manager->getTemperature();
 	}
+
+	double getTemperatureHeatsink(ApogeeAltaManager* manager)
+	{
+		return manager->getTemperatureHeatsink();
+	}
+
 
 	std::vector<uint16_t> getImageData(ApogeeAltaManager* manager)
 	{

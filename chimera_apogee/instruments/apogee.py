@@ -57,7 +57,7 @@ class Apogee(CameraBase, FilterWheelBase):
 
         self._ccds = {self._MY_CCD: CCD.IMAGING}
 
-        self._adcs = {"12 bits": self._MY_ADC}
+        self._adcs = {"12 bits": self._MY_ADC}  #FIXME
 
         self._binnings = {"1x1": self._MY_READOUT_MODE}
 

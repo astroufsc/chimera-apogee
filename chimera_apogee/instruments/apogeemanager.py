@@ -44,6 +44,11 @@ class ApogeeManager(object):
         temperature = libc.getTemperature(self.obj)
         return temperature
 
+    def getTemperatureHeatsink(self):
+        libc.getTemperatureHeatsink.restype = c.c_double
+        temperature = libc.getTemperatureHeatsink(self.obj)
+        return temperature
+
     def getImageData(self):
         libc.getImageData.restype = (c.c_ushort * 1024 * 1024 * 1024)
         return libc.getImageData(self.obj)
@@ -53,3 +58,7 @@ class ApogeeManager(object):
 
     def stopFan(self):
         return libc.stopFan(self.obj)
+
+    def isCooling(self):
+        return libc.isCooling(self.obj)
+

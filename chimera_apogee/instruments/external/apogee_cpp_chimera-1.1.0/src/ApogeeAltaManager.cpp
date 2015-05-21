@@ -338,9 +338,21 @@ void ApogeeAltaManager::stopCooling()
 	apogee_.SetCooler(false);
 }
 
+bool ApogeeAltaManager::isCooling()
+{
+	bool cooling = apogee_.IsCoolerOn();
+	return cooling;
+}
+
 double ApogeeAltaManager::getTemperature()
 {
 	double temperature = apogee_.GetTempCcd();
+	return temperature;
+}
+
+double ApogeeAltaManager::getTemperatureHeatsink()
+{
+	double temperature = apogee_.GetTempHeatsink();
 	return temperature;
 }
 
